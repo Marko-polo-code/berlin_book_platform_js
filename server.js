@@ -13,7 +13,10 @@ const user = { id: 1, username: 'testuser' };
 const token = jwt.sign(user, JWT_SECRET);
 
 // Database connection
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+const sequelize = new Sequelize('database', 'username', 'db/password.txt', {
+  host: 'localhost',
+  dialect: 'postgres',
+});
 
 // Define User and Book models
 const User = sequelize.define('User', {
